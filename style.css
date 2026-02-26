@@ -157,15 +157,14 @@ ul li::before {
     font-size: 15px;
 }
 .edu-logo {
-    width: 90px;
-    height: 90px;
+    width: 90px; /* 固定宽度，和本地一致 */
+    height: auto; /* 高度自动，跟随图片原比例，绝对不拉伸 */
     border-radius: 8px;
     border: 2px solid #f0ebe9;
     padding: 5px;
     background: #fff;
-    object-fit: contain;
+    object-fit: contain; /* 保证图片完整显示，不裁剪 */
 }
-
 /* 实习经历 */
 .exp-item h3 {
     font-size: 20px;
