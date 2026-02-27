@@ -1,42 +1,430 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <link rel="icon" href="data:,">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>廖梓雅 - 跨境电商运营个人简历</title>
-    <!-- 字体图标（Replit CDN 兼容） -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 自定义样式 -->
-    <link rel="stylesheet" href="style.css">
-    <!-- 预加载关键资源 -->
-    <link rel="preload" as="image" href="avatar.jpg">
+    <title>廖梓雅 - 个人简历</title>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 完整样式（还原原本设计） -->
+    <style>
+        /* 全局重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 导航栏 */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+            flex: 1;
+            margin: 0 2rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        /* 通用区块样式 */
+        .section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.8rem;
+        }
+
+        .content-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .highlight {
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        /* 个人简介 */
+        .life-photos {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .life-photos img {
+            width: calc(33.33% - 1rem);
+            min-width: 280px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        #profile p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* 教育背景 */
+        .edu-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .edu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .edu-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .edu-text h3 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-text p {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 实习经历 */
+        .exp-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .exp-item h3 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .time {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .exp-item ul {
+            margin-left: 1.5rem;
+            color: #555;
+        }
+
+        .exp-item li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* 国际志愿 */
+        .vol-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .vol-item h3 {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+
+        .vol-item ul {
+            margin-left: 1.5rem;
+            color: #555;
+        }
+
+        /* 核心技能 */
+        .skill-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f1f5f9;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .skill-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+        }
+
+        .skill-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* 证书荣誉 */
+        .award-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .award-item {
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .award-item i {
+            color: #3498db;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* 联系方式 */
+        .contact-card {
+            text-align: center;
+        }
+
+        .contact-card p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: #2c3e50;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer .content-card {
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #3498db;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-wrap: wrap;
+            }
+
+            .nav-title {
+                flex: none;
+                margin: 0 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                padding-top: 1rem;
+                margin-top: 1rem;
+                border-top: 1px solid #444;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .life-photos img {
+                width: 100%;
+            }
+
+            .edu-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 顶部导航+头像（固定顶部，Replit 滚动更友好） -->
+    <!-- 顶部导航+头像 -->
     <nav class="nav-bar">
-        <img src="avatar.jpg" class="avatar" loading="lazy" alt="廖梓雅头像">
-        <div class="nav-title">ZIYA LIAO 廖梓雅 - 跨境电商运营</div>
-        <ul class="nav-menu">
-            <li><a href="#profile" class="nav-link">个人简介</a></li>
-            <li><a href="#education" class="nav-link">教育背景</a></li>
-            <li><a href="#experience" class="nav-link">实习经历</a></li>
-            <li><a href="#volunteer" class="nav-link">国际志愿</a></li>
-            <li><a href="#skills" class="nav-link">核心技能</a></li>
-            <li><a href="#awards" class="nav-link">证书荣誉</a></li>
-            <li><a href="#contact" class="nav-link">联系方式</a></li>
+        <img src="avatar.jpg" class="avatar" alt="廖梓雅头像">
+        <div class="nav-title">ZIYA LIAO 廖梓雅 - Lucia Liao</div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#profile">个人简介</a></li>
+            <li><a href="#education">教育背景</a></li>
+            <li><a href="#experience">实习经历</a></li>
+            <li><a href="#volunteer">国际志愿</a></li>
+            <li><a href="#skills">核心技能</a></li>
+			<li><a href="#portfolio">个人作品</a></li> 
+            <li><a href="#awards">证书荣誉</a></li>
+            <li><a href="#contact">联系方式</a></li>
         </ul>
     </nav>
 
-    <!-- 个人介绍+生活照（图片懒加载） -->
+    <!-- 个人介绍+生活照 -->
     <section id="profile" class="section">
         <h2 class="section-title">个人介绍 / PROFILE</h2>
         <div class="content-card">
             <div class="life-photos">
-                <img src="life1.jpg" alt="生活照1" loading="lazy">
-                <img src="life2.jpg" alt="生活照2" loading="lazy">
-                <img src="life3.jpg" alt="生活照3" loading="lazy">
+                <img src="life1.jpg" alt="生活照1">
+                <img src="life2.jpg" alt="生活照2">
+                <img src="life3.jpg" alt="生活照3">
             </div>
-            <p>具备扎实的内容策划与文案能力,熟悉跨境电商品牌表达逻辑,能独立完成产品卖点提炼、Listing 内容撰写、短视频脚本编写等工作。拥有大型活动执行经验,熟悉活动排期、流程梳理与复盘方法。英语能力优秀(<span class="highlight">TEM-8 / IELTS 7.0</span>),可胜任跨境内容本地化及海外客户沟通。具备数据意识,能根据点击率、转化率等指标进行内容优化。</p>
+           <p>以<span class="highlight">“内容+数据+AI”</span>为核心竞争力，立志深耕美妆电商领域。具备深厚的跨境品牌表达功底，擅长美妆产品卖点提炼、Listing文案撰写与短视频脚本创作。熟练运用AI工具开发<span class="highlight">展示型网站</span>、制作<span class="highlight">数据分析工具</span>，将技术能力融入电商运营，实现高效内容生产与数据复盘。英语能力卓越（TEM-8/IELTS 7.0），可无缝衔接跨境内容本地化工作。性格开朗阳光，热爱旅游、摄影与剪辑，对互联网热点敏感，能精准捕捉美妆消费趋势；作为大学Locking街舞社社长，练就了优秀的活动组织策划与统筹能力，可高效落地电商大促活动，兼具执行力与创意力，助力品牌品效合一。</p>
         </div>
     </section>
 
@@ -50,7 +438,7 @@
                     <p><span class="highlight">语言学及应用语言学硕士</span> | MA in Linguistics & Applied Linguistics</p>
                     <p>预计毕业：<span class="highlight">2026年7月</span> | Expected Graduation: Jul 2026</p>
                 </div>
-                <img src="cuhk.png" class="edu-logo" alt="港中文LOGO" loading="lazy">
+                <img src="cuhk.png" class="edu-logo" alt="港中文LOGO">
             </div>
             <div class="edu-item">
                 <div class="edu-text">
@@ -58,7 +446,7 @@
                     <p><span class="highlight">英语（师范教育）学士</span> | BA in English (Teacher Education)</p>
                     <p>毕业时间：<span class="highlight">2025年6月</span> | Graduation: Jun 2025</p>
                 </div>
-                <img src="tjnnu.png" class="edu-logo" alt="天津师大LOGO" loading="lazy">
+                <img src="tjnnu.png" class="edu-logo" alt="天津师大LOGO">
             </div>
         </div>
     </section>
@@ -69,7 +457,7 @@
         <div class="content-card">
             <div class="exp-item">
                 <h3>实习高中英语教师</h3>
-                <p class="time">09/2024 - 12/2024 | 邵阳市第一中学</p>
+                <span class="time">09/2024 - 12/2024 | 邵阳市第一中学</span>
                 <ul>
                     <li>负责课程表与办公文案文档的整理、归档与模板化，沉淀标准化<span class="highlight">SOP</span>，提升团队复用效率</li>
                     <li>协助年级组推进日常事务与数据统计，进行进度跟踪与信息通报</li>
@@ -78,7 +466,7 @@
             </div>
             <div class="exp-item">
                 <h3>实习机构助教</h3>
-                <p class="time">07/2022 - 09/2022 | Xueyi Education Training School</p>
+                <span class="time">07/2022 - 09/2022 | Xueyi Education Training School</span>
                 <ul>
                     <li>负责排课协调、学员信息管理、数据录入与档案归档</li>
                     <li>制作教学/培训PPT及活动资料，参与活动组织与现场执行</li>
@@ -151,7 +539,68 @@
             </div>
         </div>
     </section>
+<section id="portfolio" class="section">
+        <h2 class="section-title">个人作品集 / PORTFOLIO</h2>
+        <div class="content-card portfolio-card">
+            <!-- 个人简历网站 -->
+            <div class="portfolio-item">
+                <div class="portfolio-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>个人简历展示网站</h3>
+                    <p class="portfolio-desc">基于HTML/CSS/JavaScript开发的响应式个人简历网站，适配PC/移动端，集成导航平滑滚动、交互菜单等功能，全程运用AI工具辅助代码编写与样式优化。</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">AI编码</span>
+                        <span class="tag">响应式设计</span>
+                        <span class="tag">前端开发</span>
+                    </div>
+                    <a href="http://localhost:8000" target="_blank" class="portfolio-link">
+                        查看作品 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
 
+            <!-- 电商数据分析工具（可根据实际补充） -->
+            <div class="portfolio-item">
+                <div class="portfolio-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>电商数据可视化小工具</h3>
+                    <p>运用AI工具辅助开发的简易数据分析APP，支持电商核心指标（点击率/转化率）录入、计算与可视化展示，可快速生成复盘报告，提升运营决策效率。</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">AI应用</span>
+                        <span class="tag">数据可视化</span>
+                        <span class="tag">电商运营</span>
+                    </div>
+                    <a href="#" target="_blank" class="portfolio-link disabled">
+                        待上线 <i class="fas fa-clock"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 跨境电商Listing案例（可根据实际补充） -->
+            <div class="portfolio-item">
+                <div class="portfolio-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>美妆类跨境Listing文案合集</h3>
+                    <p>针对美妆品类撰写的跨境电商Listing文案，结合SEO关键词优化与品牌表达逻辑，突出产品卖点与用户痛点，适配海外消费者语言习惯。</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">内容策划</span>
+                        <span class="tag">跨境电商</span>
+                        <span class="tag">英文文案</span>
+                    </div>
+                    <a href="#" target="_blank" class="portfolio-link disabled">
+                        私密查看 <i class="fas fa-lock"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+	
     <!-- 证书与荣誉 -->
     <section id="awards" class="section">
         <h2 class="section-title">证书与荣誉 / CERTIFICATES & AWARDS</h2>
@@ -174,12 +623,67 @@
             <p><i class="fas fa-map-marker-alt"></i> Address: Hunan</p>
             <p><i class="fas fa-phone"></i> Phone: +86 18873954545</p>
             <p><i class="fas fa-envelope"></i> Email: liaoziya20242025@163.com</p>
+            <div class="social-links">
+                <a href="#" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" title="微信">
+                    <i class="fab fa-weixin"></i>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" title="微博">
+                    <i class="fab fa-weibo"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- 引入JS（Replit 底部加载，提升首屏速度） -->
-    <script src="script.js" defer></script>
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="content-card">
+            <p>&copy; 2026 廖梓雅. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#profile">个人简介</a>
+                <a href="#education">教育背景</a>
+                <a href="#experience">实习经历</a>
+                <a href="#volunteer">国际志愿</a>
+                <a href="#skills">核心技能</a>
+                <a href="#awards">证书荣誉</a>
+                <a href="#contact">联系方式</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 导航交互JS（还原原本的移动端菜单功能） -->
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // 平滑滚动（点击导航跳转到对应区块）
+        document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 移动端点击后关闭菜单
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-</html>
-
